@@ -5,30 +5,33 @@ import java.util.List;
 import org.gestion.banque.dao.IClientDAO;
 import org.gestion.banque.entity.Client;
 import org.gestion.banque.metier.IClientMetier;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public class ClientMetierImpl implements IClientMetier{
 
-	private IClientDAO dao;
+	private IClientDAO clientDao;
 	
-	public void setDao(IClientDAO dao) {
-		this.dao = dao;
+	public void setClientDao(IClientDAO dao) {
+		this.clientDao = dao;
 	}
 
 	@Override
 	public Client addClient(Client c) {
-		dao.addClient(c);
+		clientDao.addClient(c);
 		return c;
 	}
 
 	@Override
 	public Client consulterClient(Long codeCli) {
-		Client cli = dao.consulterClient(codeCli);
+		Client cli = clientDao.consulterClient(codeCli);
 		return cli;
 	}
 
 	@Override
 	public List<Client> consulterClients(String mc) {
-		return dao.consulterClients(mc);
+		return clientDao.consulterClients(mc);
 	}
 
 }

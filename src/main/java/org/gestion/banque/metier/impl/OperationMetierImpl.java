@@ -9,32 +9,34 @@ import org.gestion.banque.entity.Operation;
 import org.gestion.banque.entity.Retrait;
 import org.gestion.banque.entity.Versement;
 import org.gestion.banque.metier.IOperationMetier;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public class OperationMetierImpl implements IOperationMetier{
 
-	private IOperationDAO dao;
+	private IOperationDAO operationDao;
 	
-	public void setDao(IOperationDAO dao) {
-		this.dao = dao;
+	public void setOperationDao(IOperationDAO dao) {
+		this.operationDao = dao;
 	}
 
 	@Override
 	public Operation addOperation(Operation op, String codeCpte, Long codeEmp) {
 		// TODO Auto-generated method stub
-		return dao.addOperation(op, codeCpte, codeEmp);
+		return operationDao.addOperation(op, codeCpte, codeEmp);
 	}
 
 	@Override
 	public void verser(String codeCpte, double mt, Long codeEmp) {
-		dao.addOperation(new Versement(new Date(),mt), codeCpte, codeEmp);
-		Compte cp = dao.consulterCompte(codeCpte);
+		operationDao.addOperation(new Versement(new Date(),mt), codeCpte, codeEmp);
+		Compte cp = operationDao.consulterCompte(codeCpte);
 		cp.setSolde(cp.getSolde()+mt);
 	}
 
 	@Override
 	public void retirer(String codeCpte, double mt, Long codeEmp) {
-		dao.addOperation(new Retrait(new Date(),mt), codeCpte, codeEmp);
-		Compte cp = dao.consulterCompte(codeCpte);
+		operationDao.addOperation(new Retrait(new Date(),mt), codeCpte, codeEmp);
+		Compte cp = operationDao.consulterCompte(codeCpte);
 		cp.setSolde(cp.getSolde()-mt);
 	}
 
@@ -47,13 +49,13 @@ public class OperationMetierImpl implements IOperationMetier{
 	@Override
 	public List<Operation> consulterOperationCompte(String codeCpte) {
 		// TODO Auto-generated method stub
-		return dao.consulterOperationCompte(codeCpte);
+		return operationDao.consulterOperationCompte(codeCpte);
 	}
 
 	@Override
 	public Compte consulterCompte(String codeCpte) {
 		// TODO Auto-generated method stub
-		return dao.consulterCompte(codeCpte);
+		return operationDao.consulterCompte(codeCpte);
 	}
 
 }
