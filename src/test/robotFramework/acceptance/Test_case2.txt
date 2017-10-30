@@ -1,0 +1,17 @@
+*** Settings ***
+Library    org.robotframework.javalib.library.AnnotationLibrary   org/gestion/banque/test/**.class
+
+*** Variable ***
+${nomClient1}    Client1
+${adresseClient1}    Adr1
+
+*** Keywords ***
+Creer Un Nouveau Client
+    [Arguments]    ${nomClient1}    ${adresseClient1}
+
+*** Test Cases ***
+Banque Keyword Library
+    Creer Un Nouveau Client  ${nomClient1}    ${adresseClient1}
+    
+
+    

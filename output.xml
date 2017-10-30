@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.2 (Jython 2.7.0 on java1.8.0_66)" generated="20171030 00:17:30.155">
+<suite source="C:\Users\xavier\workspace\banque" name="Banque" id="s1">
+<suite source="C:\Users\xavier\workspace\banque\src" name="Src" id="s1-s1">
+<suite source="C:\Users\xavier\workspace\banque\src\test" name="Test" id="s1-s1-s1">
+<suite source="C:\Users\xavier\workspace\banque\src\test\robotFramework" name="robotFramework" id="s1-s1-s1-s1">
+<suite source="C:\Users\xavier\workspace\banque\src\test\robotFramework\acceptance" name="Acceptance" id="s1-s1-s1-s1-s1">
+<suite source="C:\Users\xavier\workspace\banque\src\test\robotFramework\acceptance\Test_case2.txt" name="Test case2" id="s1-s1-s1-s1-s1-s1">
+<test name="Banque Keyword Library" id="s1-s1-s1-s1-s1-s1-t1">
+<kw name="Creer Un Nouveau Client">
+<arguments>
+<arg>Client1</arg>
+<arg>Adr1</arg>
+</arguments>
+<msg level="FAIL" timestamp="20171030 00:18:09.188">User keyword 'Creer Un Nouveau Client' contains no keywords.</msg>
+<status endtime="20171030 00:18:09.210" starttime="20171030 00:18:09.060" status="FAIL"></status>
+</kw>
+<status critical="yes" endtime="20171030 00:18:09.251" starttime="20171030 00:18:09.017" status="FAIL">User keyword 'Creer Un Nouveau Client' contains no keywords.</status>
+</test>
+<status endtime="20171030 00:18:09.290" starttime="20171030 00:18:08.584" status="FAIL"></status>
+</suite>
+<status endtime="20171030 00:18:09.445" starttime="20171030 00:18:08.461" status="FAIL"></status>
+</suite>
+<status endtime="20171030 00:18:09.561" starttime="20171030 00:18:08.395" status="FAIL"></status>
+</suite>
+<status endtime="20171030 00:18:09.620" starttime="20171030 00:18:08.287" status="FAIL"></status>
+</suite>
+<status endtime="20171030 00:18:09.691" starttime="20171030 00:18:08.164" status="FAIL"></status>
+</suite>
+<status endtime="20171030 00:18:09.827" starttime="20171030 00:18:05.749" status="FAIL"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" name="Banque" id="s1">Banque</stat>
+<stat pass="0" fail="1" name="Src" id="s1-s1">Banque.Src</stat>
+<stat pass="0" fail="1" name="Test" id="s1-s1-s1">Banque.Src.Test</stat>
+<stat pass="0" fail="1" name="robotFramework" id="s1-s1-s1-s1">Banque.Src.Test.robotFramework</stat>
+<stat pass="0" fail="1" name="Acceptance" id="s1-s1-s1-s1-s1">Banque.Src.Test.robotFramework.Acceptance</stat>
+<stat pass="0" fail="1" name="Test case2" id="s1-s1-s1-s1-s1-s1">Banque.Src.Test.robotFramework.Acceptance.Test case2</stat>
+</suite>
+</statistics>
+<errors>
+<msg level="ERROR" timestamp="20171030 00:18:08.792">Error in file 'C:\Users\xavier\workspace\banque\src\test\robotFramework\acceptance\Test_case2.txt': Importing test library 'org.robotframework.javalib.library.AnnotationLibrary' failed: ImportError: No module named robotframework
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\jython2.7.0\Lib\site-packages\robotframework-3.0.2-py2.7.egg
+  C:\jython2.7.0\Lib\site-packages
+  C:\jython2.7.0\Lib
+  __classpath__
+  __pyclasspath__/
+CLASSPATH:
+  C:\jython2.7.0\jython.jar
+  .</msg>
+</errors>
+</robot>
