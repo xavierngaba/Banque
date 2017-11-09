@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+	<bean id="ClientDao" class="org.gestion.banque.impl.ClientDaoImpl"></bean>
+	<bean id="CompteDao" class="org.gestion.banque.impl.CompteDaoImpl"></bean>
+	<bean id="EmployeDao" class="org.gestion.banque.impl.EmployeDaoImpl"></bean>
+	<bean id="GroupeDao" class="org.gestion.banque.impl.GroupeDaoImpl"></bean>
+	<bean id="OperationDao" class="org.gestion.banque.impl.OperationDaoImpl"></bean>
+	
+	<bean id="ClientMetier" class="org.gestion.banque.metier.impl.ClientMetierImpl">
+		<property name="clientDao" ref="ClientDao"></property>
+	</bean>
+	
+	<bean id="CompteMetier" class="org.gestion.banque.metier.impl.CompteMetierImpl">
+		<property name="compteDao" ref="CompteDao"></property>
+	</bean>
+	
+	<bean id="EmployeMetier" class="org.gestion.banque.metier.impl.EmployeMetierImpl">
+		<property name="employeDao" ref="EmployeDao"></property>
+	</bean>
+	
+	<bean id="GroupeMetier" class="org.gestion.banque.metier.impl.GroupeMetierImpl">
+		<property name="groupeDao" ref="GroupeDao"></property>
+	</bean>
+	
+	<bean id="OperationMetier" class="org.gestion.banque.metier.impl.OperationMetierImpl">
+		<property name="operationDao" ref="OperationDao"></property>
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/banque_db"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+	</bean>
+	
+	<bean id="persistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+		<property name="persistenceXmlLocations">
+			<list>
+				<value>classpath:META-INF/persistence.xml</value>
+			</list>
+		</property>
+		<property name="defaultDataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="entityManagerfactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitManager" ref="persistenceUnitManager"></property>
+		<property name="persistenceUnitName" value="Banque_PU"></property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerfactory"></property>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<context:annotation-config></context:annotation-config>
+</beans>
