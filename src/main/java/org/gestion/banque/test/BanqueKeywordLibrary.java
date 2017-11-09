@@ -42,12 +42,21 @@ public class BanqueKeywordLibrary {
 	}
 	
 	/**
+	 * Mots-clé pour chercher un client
+	 * @param nomClient
+	 */
+	@RobotKeyword
+	public String chercherUnClient(String nomClient){
+		return gestionnaireClient.consulterClients(nomClient).get(0).getNomClient();
+	}
+	
+	/**
 	 * Mots-clé pour ajouter un employé
 	 * @param nomEmploye
 	 * @param codeEmployeSup
 	 */
 	@RobotKeyword
-	private void creerUnNouvelEmploye(String nomEmploye,Long codeEmployeSup){
+	public void creerUnNouvelEmploye(String nomEmploye,Long codeEmployeSup){
 		emp = gestionnaireEmploye.addEmploye(new Employe(nomEmploye), codeEmployeSup);
 	}
 	
@@ -60,7 +69,7 @@ public class BanqueKeywordLibrary {
 	 * @param codeEmploye
 	 */
 	@RobotKeyword
-	private void creerUnNouveauCompte(double solde,double decouvert,Long codeClient,Long codeEmploye){
+	public void creerUnNouveauCompte(double solde,double decouvert,Long codeClient,Long codeEmploye){
 		cpte = gestionnaireCompte.addCompte(new CompteCourant("Cpte1",new Date(),solde,decouvert), codeClient, codeEmploye);
 	}
 }
