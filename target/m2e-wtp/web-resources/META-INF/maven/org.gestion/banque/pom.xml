@@ -205,10 +205,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<parent>
-		<groupId>banque-all</groupId>
-		<artifactId>banque-all</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../banque-all/pom.xml</relativePath>
-	</parent>
 </project>
